@@ -1,0 +1,4 @@
+g2 <- graph_from_literal(ea019-mm251:vd023: eh034:hb057:mk294:nv010, nv010-am173:jk188:mm251:do109:ja047:ea109:rm046:ja047:ea109:rm046, do019-ja047:gk038:rm046:am173:ss440:al107:jk188, am173-gk038:ir031:nv010:jk188:ss445:mm251:ea019)
+plot(g2, layout = layout_with_kk, edge.arrow.size=0.2, edge.curved=0.2, main = "Freundschaftsnetzwerk Pre-Test"
+g3 <- graph_from_literal(ea019, am173-nv010-do019)
+plot(g3, layout = layout_with_kk, edge.arrow.size=0.2, edge.curved=0.2, main = "Freundschaftsnetzwerk Kategorie: Wohnort")
