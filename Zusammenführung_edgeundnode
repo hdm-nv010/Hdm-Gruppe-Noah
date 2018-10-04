@@ -1,0 +1,71 @@
+> el <- read.csv("https://raw.githubusercontent.com/hdm-nv010/Projekt-Freundschaftsumfrage/master/Edgelist%20IST-Netzwerk%20-%20Sheet1.csv", header=T, as.is=T, sep = ",")
+> nodes <- read.csv("https://raw.githubusercontent.com/hdm-nv010/Projekt-Freundschaftsumfrage/master/Nodelist%20%20-%20Tabellenblatt1.csv", header=T, as.is=T, sep = ",")
+> # prüft, ob alle Variablen eingelesen wurden
+> head(el)
+   from    to
+1 lp056 lr053
+2 lp056 sr145
+3 lp056 lb102
+4 lp056 mm251
+5 lp056 ss439
+6 vd023 eh034
+> 
+> head(nodes)
+     ID CRPR Geschlecht Alter Wohnart X1.Zocken X2.Ausgehen...Feiern
+1 lp056    1          1     3       2         2                    2
+2 vd023    2          1     3       2         2                    1
+3 pt018    2          1     2       2         2                    1
+4 lb106    2          1     4       5         1                    2
+5 hb057    2          1     5       2         2                    1
+6 ss440    2          1     2       5         2                    2
+  X3.Trinken.Essen.gehen X4.Kaffee.trinken X5.Sport X6.Shoppen X7.Kochen...Backen
+1                      1                 1        2          2                  1
+2                      1                 1        2          1                  2
+3                      1                 1        2          1                  2
+4                      2                 2        2          1                  2
+5                      1                 1        1          2                  2
+6                      1                 2        2          2                  1
+  X8.Filmabend X9.Kunst...Fotografie X10.Ausflüge...Reisen X11.Chillen X12.Spieleabend
+1            2                     2                     1           2               2
+2            2                     2                     2           2               2
+3            2                     2                     2           2               2
+4            2                     2                     2           1               2
+5            2                     2                     2           2               2
+6            1                     2                     2           2               1
+  X13.Reden Religion Insta Ernährung Moral Yanny.Laurel
+1         2        0     3         4     4            1
+2         2        0     3         3     1            1
+3         2        0     3         3     1            2
+4         2        0     1         3     2            3
+5         2        1     3         4     1            2
+6         2        0     2         1     6            2
+> hties <-as.matrix(el)
+> students <- graph_from_data_frame(d=hties, vertices=nodes, directed=T)
+> students
+IGRAPH e1695c2 DN-- 39 177 -- 
++ attr: name (v/c), CRPR (v/n), Geschlecht (v/n), Alter (v/n), Wohnart (v/n),
+| X1.Zocken (v/n), X2.Ausgehen...Feiern (v/n), X3.Trinken.Essen.gehen (v/n),
+| X4.Kaffee.trinken (v/n), X5.Sport (v/n), X6.Shoppen (v/n),
+| X7.Kochen...Backen (v/n), X8.Filmabend (v/n), X9.Kunst...Fotografie (v/n),
+| X10.Ausflüge...Reisen (v/n), X11.Chillen (v/n), X12.Spieleabend (v/n),
+| X13.Reden (v/n), Religion (v/n), Insta (v/n), Ernährung (v/n), Moral (v/n),
+| Yanny.Laurel (v/n)
++ edges from e1695c2 (vertex names):
+ [1] lp056->lr053 lp056->sr145 lp056->lb102 lp056->mm251 lp056->ss439 vd023->eh034
+ [7] vd023->nt022 vd023->nd042 vd023->dm100 vd023->ea019 pt018->kh107 pt018->rz015
++ ... omitted several edges
+> s <- simplify(students, edge.attr.comb = list(weight="sum"))
+> s
+IGRAPH 67602c6 DN-- 39 177 -- 
++ attr: name (v/c), CRPR (v/n), Geschlecht (v/n), Alter (v/n), Wohnart (v/n),
+| X1.Zocken (v/n), X2.Ausgehen...Feiern (v/n), X3.Trinken.Essen.gehen (v/n),
+| X4.Kaffee.trinken (v/n), X5.Sport (v/n), X6.Shoppen (v/n),
+| X7.Kochen...Backen (v/n), X8.Filmabend (v/n), X9.Kunst...Fotografie (v/n),
+| X10.Ausflüge...Reisen (v/n), X11.Chillen (v/n), X12.Spieleabend (v/n),
+| X13.Reden (v/n), Religion (v/n), Insta (v/n), Ernährung (v/n), Moral (v/n),
+| Yanny.Laurel (v/n)
++ edges from 67602c6 (vertex names):
+ [1] lp056->sr145 lp056->lr053 lp056->lb102 lp056->mm251 lp056->ss439 vd023->dm100
+ [7] vd023->nd042 vd023->ea019 vd023->eh034 vd023->nt022 pt018->hb057 pt018->rz015
++ ... omitted several edges
+> plot(s)
