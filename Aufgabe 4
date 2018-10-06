@@ -1,0 +1,26 @@
+s_all <- graph_from_data_frame(d=eties, vertices=nodes, directed=T)
+edge.attributes(s_all)
+edge.attributes(s_all)$relation
+
+par(mfrow=c(1,2), mar=c(0,0,2,0))
+
+w <- subgraph.edges(s_all, E(s_all)[relation == 6])
+w
+w1 <- simplify(w, edge.attr.comb = list(weight="sum"))
+edge.attributes(w)$relation
+edge.attributes(w1)$weight
+gc <- cluster_walktrap(w1)
+modularity(gc)
+membership(gc)
+plot(gc, w1, edge.arrow.size=.2, main="Arbeitsnetzwerk")
+
+
+h <- subgraph.edges(s_all, E(s_all)[relation == 7])
+h
+h1 <- simplify(h, edge.attr.comb = list(weight="sum"))
+edge.attributes(h1)$weight
+edge.attributes(h)$relation
+gc <- cluster_walktrap(h1)
+modularity(gc)
+membership(gc)
+plot(gc, h1, edge.arrow.size=.2, main="Hilfsnetzwerk")
