@@ -17,6 +17,16 @@ degree(s)
 degree(s, mode ="out")
 degree(s, mode="all", normalized = TRUE)
 centr_degree(s, mode = c("all"), loops = TRUE, normalized = TRUE)
+
+#nodes CR bekommen die Farbe "rot" zugeordnet.
 V(s)[CRPR == 1]$color <- "red"
+
+#nodes PR bekommen die Farbe "rot" zugeordnet.
 V(s)[CRPR == 2]$color <- "dodgerblue"
+
+#Fruchterman_Reihngold als Darstellung verwenden
 plot(s, layout = layout_with_fr, edge.curved=.2, main="Fruchterman-Rheingold")
+
+#Codebuch:
+#1 CR
+#2 PR
