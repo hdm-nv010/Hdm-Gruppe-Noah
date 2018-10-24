@@ -11,31 +11,12 @@ plot(s)
 plot(eli, edge.arrow.size=0.2)
 list.edge.attributes(students)
 list.vertex.attributes(students)
-E(s)$weight
 list.vertex.attributes(s)
 list.edge.attributes(s)
-name <- V(s)$name
-name
 degree(s)
 degree(s, mode ="out")
 degree(s, mode="all", normalized = TRUE)
 centr_degree(s, mode = c("all"), loops = TRUE, normalized = TRUE)
-# Zentralisierter Degree-Wert
-centr_degree(s)$centralization
-
-#Zentralisierter Closeness-Wert
-centr_clo(s, mode = "all")$centralization
-
-#Zentralisierter Betweenness-Wert
-centr_betw(s, directed = FALSE)$centralization
-
-#Zentralisierter Eigenvector-Wert
-centr_eigen(s, directed = FALSE)$centralization
-betweenness(s)
-edge_betweenness(s)
-alter <- V(s)$Alter
-wohnart <- V(s)$Wohnart
-wohnart <- V(s)$Wohnart
 V(s)[CRPR == 1]$color <- "red"
 V(s)[CRPR == 2]$color <- "dodgerblue"
-plot(s)
+plot(s, layout = layout_with_fr, edge.curved=.2, main="Fruchterman-Rheingold")
