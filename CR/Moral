@@ -1,0 +1,32 @@
+el <- read.csv("https://raw.githubusercontent.com/hdm-nv010/Projekt-Freundschaftsumfrage/master/Edgelist%20IST-Netzwerk%20-%20Sheet1.csv", header=T, as.is=T, sep = ",")
+nodes <- read.csv("https://raw.githubusercontent.com/hdm-nv010/Projekt-Freundschaftsumfrage/master/Nodelist%20%20-%20Tabellenblatt1.csv", header=T, as.is=T, sep = ",")
+head(el)
+head(nodes)
+hties <-as.matrix(el)
+students <- graph_from_data_frame(d=hties, vertices=nodes, directed=T)
+students
+s <- simplify(students, edge.attr.comb = list(weight="sum"))
+s
+plot(s)
+
+list.vertex.attributes(s)
+moral <- V(s)$Moral
+
+V(s)[moral == 1]$color <- "green"
+V(s)[moral == 2]$color <- "brown"
+V(s)[moral == 3]$color <- "red"
+V(s)[moral == 4]$color <- "blue"
+V(s)[moral == 5]$color <- "pink"
+V(s)[moral == 6]$color <- "darkcyan"
+V(s)[moral == 7]$color <- "darkseagreen"
+
+plot(s)
+
+#Codebuch Ernährung
+#1, aufhoeren, Grün
+#2, koerperlicheinschreiten, Braun
+#3, wegschauen, Rot
+#4, jemandensuchen, Blau
+#5, zuschauen, Pink
+#6, gemeinsameinschreiten, darkcyan
+#7, fragen, darkasgreen
