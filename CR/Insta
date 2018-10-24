@@ -1,0 +1,28 @@
+el <- read.csv("https://raw.githubusercontent.com/hdm-nv010/Projekt-Freundschaftsumfrage/master/Edgelist%20IST-Netzwerk%20-%20Sheet1.csv", header=T, as.is=T, sep = ",")
+nodes <- read.csv("https://raw.githubusercontent.com/hdm-nv010/Projekt-Freundschaftsumfrage/master/Nodelist%20%20-%20Tabellenblatt1.csv", header=T, as.is=T, sep = ",")
+head(el)
+head(nodes)
+hties <-as.matrix(el)
+students <- graph_from_data_frame(d=hties, vertices=nodes, directed=T)
+students
+s <- simplify(students, edge.attr.comb = list(weight="sum"))
+s
+plot(s)
+list.vertex.attributes(s)
+insta <- V(s)$Insta
+
+V(s)[insta == 0]$color <- "azure"
+V(s)[insta == 1]$color <- "cyan"
+V(s)[insta == 2]$color <- "cornflowerblue"
+V(s)[insta == 3]$color <- "blue"
+V(s)[insta == 4]$color <- "darkviolet"
+V(s)[insta == 5]$color <- "deeppink3"
+
+plot(s)
+#Codebuch Instagram
+#0, keine Angabe, azure
+#1, < 1 Stunde, cyan
+#2, 1-2 Stunden, cornflowerblue
+#3, 2-4 Stunden, blue
+#4, 4-6 Stunden, darkviolet
+#5, über 6 Stunden, deeppink3
