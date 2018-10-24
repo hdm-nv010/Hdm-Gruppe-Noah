@@ -1,0 +1,22 @@
+el <- read.csv("https://raw.githubusercontent.com/hdm-nv010/Projekt-Freundschaftsumfrage/master/Edgelist%20IST-Netzwerk%20-%20Sheet1.csv", header=T, as.is=T, sep = ",")
+nodes <- read.csv("https://raw.githubusercontent.com/hdm-nv010/Projekt-Freundschaftsumfrage/master/Nodelist%20%20-%20Tabellenblatt1.csv", header=T, as.is=T, sep = ",")
+head(el)
+head(nodes)
+hties <-as.matrix(el)
+students <- graph_from_data_frame(d=hties, vertices=nodes, directed=T)
+students
+s <- simplify(students, edge.attr.comb = list(weight="sum"))
+s
+plot(s)
+
+list.vertex.attributes(s)
+sex <- V(s)$Geschlecht
+
+V(s)[sex == 1]$color <- "deeppink"
+V(s)[sex == 2]$color <- "deepskyblue"
+
+plot(s)
+
+#Codebuch Wohnort
+#1, weiblich, Pink
+#2, männlich, Blau
