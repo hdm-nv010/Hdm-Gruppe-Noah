@@ -1,0 +1,36 @@
+el <- read.csv("https://raw.githubusercontent.com/hdm-nv010/Projekt-Freundschaftsumfrage/master/Edgelist%20IST-Netzwerk%20-%20Sheet1.csv", header=T, as.is=T, sep = ",")
+nodes <- read.csv("https://raw.githubusercontent.com/hdm-nv010/Projekt-Freundschaftsumfrage/master/Nodelist%20%20-%20Tabellenblatt1.csv", header=T, as.is=T, sep = ",")
+head(el)
+head(nodes)
+hties <-as.matrix(el)
+students <- graph_from_data_frame(d=hties, vertices=nodes, directed=T)
+students
+s <- simplify(students, edge.attr.comb = list(weight="sum"))
+s
+plot(s)
+
+list.vertex.attributes(s)
+alter <- V(s)$Alter
+
+V(s)[alter == 1]$color <- "green"
+V(s)[alter == 2]$color <- "brown"
+V(s)[alter == 3]$color <- "red"
+V(s)[alter == 4]$color <- "blue"
+V(s)[alter == 5]$color <- "pink"
+V(s)[alter == 6]$color <- "darkcyan"
+V(s)[alter == 7]$color <- "darkseagreen"
+V(s)[alter == 8]$color <- "coral"
+V(s)[alter == 9]$color <- "blueviolet"
+
+plot(s)
+
+#Codebuch Ernährung
+#1, 19, Grün
+#2, 20, Braun
+#3, 21, Rot
+#4, 22, Blau
+#5, 23, Pink
+#6, 24, darkcyan
+#7, 25, darkasgreen
+#8, 28, coral
+#9, 29, blueviolet
