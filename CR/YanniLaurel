@@ -1,0 +1,24 @@
+el <- read.csv("https://raw.githubusercontent.com/hdm-nv010/Projekt-Freundschaftsumfrage/master/Edgelist%20IST-Netzwerk%20-%20Sheet1.csv", header=T, as.is=T, sep = ",")
+nodes <- read.csv("https://raw.githubusercontent.com/hdm-nv010/Projekt-Freundschaftsumfrage/master/Nodelist%20%20-%20Tabellenblatt1.csv", header=T, as.is=T, sep = ",")
+head(el)
+head(nodes)
+hties <-as.matrix(el)
+students <- graph_from_data_frame(d=hties, vertices=nodes, directed=T)
+students
+s <- simplify(students, edge.attr.comb = list(weight="sum"))
+s
+plot(s)
+
+list.vertex.attributes(s)
+yannilaurel <- V(s)$Yanny.Laurel
+
+V(s)[yannilaurel == 1]$color <- "aquamarine2"
+V(s)[yannilaurel == 2]$color <- "deeppink"
+V(s)[yannilaurel == 3]$color <- "darkgoldenrod2"
+
+plot(s)
+
+#Codebuch yannilaurel
+#1, yanni, aquamarine2
+#2, laurel, deeppink
+#3, weder noch, darkgoldenrod2
