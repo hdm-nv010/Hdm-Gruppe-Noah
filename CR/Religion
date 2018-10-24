@@ -1,0 +1,33 @@
+el <- read.csv("https://raw.githubusercontent.com/hdm-nv010/Projekt-Freundschaftsumfrage/master/Edgelist%20IST-Netzwerk%20-%20Sheet1.csv", header=T, as.is=T, sep = ",")
+nodes <- read.csv("https://raw.githubusercontent.com/hdm-nv010/Projekt-Freundschaftsumfrage/master/Nodelist%20%20-%20Tabellenblatt1.csv", header=T, as.is=T, sep = ",")
+head(el)
+head(nodes)
+hties <-as.matrix(el)
+students <- graph_from_data_frame(d=hties, vertices=nodes, directed=T)
+students
+s <- simplify(students, edge.attr.comb = list(weight="sum"))
+s
+plot(s)
+
+list.vertex.attributes(s)
+alter <- V(s)$Alter
+crpr <- V(s)$CRPR
+yanny <- V(s)$Yanny.Laurel
+geschlecht <- V(s)$Geschlecht
+ernaehrung <- V(s)$Ernaehrung
+religion <- V(s)$Religion
+
+V(s)[religion == 1]$color <- "green"
+V(s)[religion == 2]$color <- "brown"
+V(s)[religion == 3]$color <- "red"
+V(s)[religion == 4]$color <- "blue"
+V(s)[religion == 5]$color <- "pink"
+V(s)[religion == 6]$color <- "yelllow"
+V(s)[religion == 7]$color <- "orange"
+V(s)[religion == 8]$color <- "black"
+
+plot(s)
+
+#Codebuch Religion
+#1,Katholisch 2, Evangelisch 3, Orthodox 4, Judentum 5, Islam 6, Buddhismus 7, Hinduismus 8, Gläubig, aber fühlt sich keiner Religion zugehörig
+
