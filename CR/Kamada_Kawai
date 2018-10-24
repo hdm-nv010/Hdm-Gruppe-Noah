@@ -17,6 +17,13 @@ degree(s)
 degree(s, mode ="out")
 degree(s, mode="all", normalized = TRUE)
 centr_degree(s, mode = c("all"), loops = TRUE, normalized = TRUE)
+
+#nodes CR bekommen die Farbe "rot" zugeordnet.
 V(s)[CRPR == 1]$color <- "red"
+
+#nodes PR bekommen die Farbe "blau" zugeordnet.
 V(s)[CRPR == 2]$color <- "dodgerblue"
+
+# Darstellung "Kamada_Kawai" wird verwendet.
+
 plot(s, layout=layout_with_kk, main="Kamada Kawai")
