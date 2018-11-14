@@ -1,3 +1,10 @@
 V(s)[crpr == 1 & geschlecht == 1]$color <- "blue"
-
 #Beispiel mit crpr und geschlecht: Alle werden blau gefärbt, die weiblich und CR studieren.
+V(s)[crpr == 1 & yannilaurel == 1]$color <- "darkolivegreen1"
+#cr studierende die yanni hören einfärben
+V(s)[crpr == 1 & yannilaurel == 2]$color <- "darkorange"
+#cr studierende die laurel hören einfärben
+V(s)[crpr == 1 & yannilaurel == 3]$color <- "gold"
+#cr studierende die weder noch hören einfärben
+plot(s)
+#mit allen angegebenen Farben und Zuteilungen visualisieren
