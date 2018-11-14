@@ -1,4 +1,5 @@
-el <- read.csv("https://raw.githubusercontent.com/hdm-nv010/Projekt-Freundschaftsumfrage/master/Edgelist_zusammenarbeit.r", header=T, as.is=T, sep = ",")
+el <- read.csv("https://raw.githubusercontent.com/hdm-nv010/Projekt-Freundschaftsumfrage/master/Edgelist_zusammenarbeit", header=T, as.is=T, sep = ",")
+head(el)
 nodes <- read.csv("https://raw.githubusercontent.com/hdm-nv010/Projekt-Freundschaftsumfrage/master/Nodelist%20%20-%20Tabellenblatt1.csv", header=T, as.is=T, sep = ",")
 # prüft, ob alle Variablen eingelesen wurdenhead(el)
 head(nodes)
