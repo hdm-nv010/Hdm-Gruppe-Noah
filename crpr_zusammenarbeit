@@ -12,4 +12,4 @@ crpr <- V(s)$CRPR
 E(s)$arrow.size <- 0.3
 V(s)[crpr == 1]$color <- "cyan2"
 V(s)[crpr == 2]$color <- "hotpink1"
-plot(s)
+plot(s, layout=layout_with_kk, main="Zusammenarbeitsnetzwerk - IST")
