@@ -69,3 +69,44 @@ V(s)[geschlecht == 1 & zusammenshoppen == 1]$color <- "cornflowerblue"
 V(s)[geschlecht == 2 & soloshoppen == 1]$color <- "gold1"
 V(s)[geschlecht == 2 & zusammenshoppen == 1]$color <- "gold1"
 plot(s, layout=layout_with_kk, main="Geschlecht & Shoppen")
+
+#Alter und Kaffee
+
+el <- read.csv("https://raw.githubusercontent.com/hdm-nv010/Projekt-Freundschaftsumfrage/master/Edgelist%20IST-Netzwerk%20-%20Sheet1.csv", header=T, as.is=T, sep = ",")
+nodes <- read.csv("https://raw.githubusercontent.com/hdm-nv010/Projekt-Freundschaftsumfrage/master/Nodelist%20%20-%20Tabellenblatt1.csv", header=T, as.is=T, sep = ",")
+# prüft, ob alle Variablen eingelesen wurdenhead(el)
+head(nodes)
+hties <-as.matrix(el)
+students <- graph_from_data_frame(d=hties, vertices=nodes, directed=T)
+students
+s <- simplify(students, edge.attr.comb = list(weight="sum"))
+s
+list.vertex.attributes(s)
+alter <- V(s)$Alter
+kaffee <- V(s)$X4.Kaffee.trinken
+E(s)$arrow.size <- 0.3
+#junge Leute von 18 bis einschließlich 22 die keinen Kaffee trinken
+V(s)[alter == 1 & kaffee == 2]$color <- "aliceblue"
+V(s)[alter == 2 & kaffee == 2]$color <- "aliceblue"
+V(s)[alter == 3 & kaffee == 2]$color <- "aliceblue"
+V(s)[alter == 4 & kaffee == 2]$color <- "aliceblue"
+#junge leute von 19 bis einschließlich 22 die Kaffee trinken
+V(s)[alter == 1 & kaffee == 1]$color <- "chocolate3"
+V(s)[alter == 2 & kaffee == 1]$color <- "chocolate3"
+V(s)[alter == 3 & kaffee == 1]$color <- "chocolate3"
+V(s)[alter == 4 & kaffee == 1]$color <- "chocolate3"
+#alte Leute von 23 bis einschließlich 29 die keinen Kaffee trinken
+V(s)[alter == 5 & kaffee == 2]$color <- "beige"
+V(s)[alter == 6 & kaffee == 2]$color <- "beige"
+V(s)[alter == 7 & kaffee == 2]$color <- "beige"
+V(s)[alter == 8 & kaffee == 2]$color <- "beige"
+V(s)[alter == 9 & kaffee == 2]$color <- "beige"
+#alte Leute von 23 bis einschließlich 29 die Kaffee trinken
+V(s)[alter == 5 & kaffee == 1]$color <- "burlywood"
+V(s)[alter == 6 & kaffee == 1]$color <- "burlywood"
+V(s)[alter == 7 & kaffee == 1]$color <- "burlywood"
+V(s)[alter == 8 & kaffee == 1]$color <- "burlywood"
+V(s)[alter == 9 & kaffee == 1]$color <- "burlywood"
+plot(s, layout=layout_with_kk, main="Alter & Kaffee")
+#von 11 alten trinken 6 kaffee und von 28 jungen trinken 17 kaffee
+#60,7 prozent der Jungen trinken Kaffee und 54,5 prozent der alten trinken Kaffee
