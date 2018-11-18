@@ -1,5 +1,5 @@
 el <- read.csv("https://raw.githubusercontent.com/hdm-nv010/Projekt-Freundschaftsumfrage/master/Edgelist%20IST-Netzwerk%20-%20Sheet1.csv", header=T, as.is=T, sep = ",")
-nodes <- read.csv("https://raw.githubusercontent.com/hdm-nv010/Projekt-Freundschaftsumfrage/master/Nodelist%20%20-%20Tabellenblatt1.csv", header=T, as.is=T, sep = ",")
+nodes <- read.csv("https://raw.githubusercontent.com/hdm-nv010/Projekt-Freundschaftsumfrage/master/Nodelist%20-%20Tabellenblatt1.csv", header=T, as.is=T, sep = ",")
 head(el)
 head(nodes)
 hties <-as.matrix(el)
@@ -21,3 +21,24 @@ moral <- V(s)$Moral
 V(s)[cr == 1 & geschlecht == 1]$color <- "blue"
 V(s)[crpr == 1 & moral == 1]$color <- "blue"
 plot(s)
+
+#Ernaehrung und Kochen
+
+el <- read.csv("https://raw.githubusercontent.com/hdm-nv010/Projekt-Freundschaftsumfrage/master/Edgelist%20IST-Netzwerk%20-%20Sheet1.csv", header=T, as.is=T, sep = ",")
+nodes <- read.csv("https://raw.githubusercontent.com/hdm-nv010/Projekt-Freundschaftsumfrage/master/Nodelist%20-%20Tabellenblatt1.csv", header=T, as.is=T, sep = ",")
+# prüft, ob alle Variablen eingelesen wurdenhead(el)
+head(nodes)
+hties <-as.matrix(el)
+students <- graph_from_data_frame(d=hties, vertices=nodes, directed=T)
+students
+s <- simplify(students, edge.attr.comb = list(weight="sum"))
+s
+list.vertex.attributes(s)
+ernaehrung <- V(s)$Ernährung
+solokochen <- V(s)$soloKochen.Backen
+E(s)$arrow.size <- 0.3
+#vegetarier
+V(s)[ernaehrung == 1 & solokochen == 1]$color <- "chartreuse3"
+#alles-fleischesser
+V(s)[ernaehrung == 3 & solokochen == 1]$color <- "firebrick"
+plot(s, layout=layout_with_kk, main="Ernaherung & Kochen")
