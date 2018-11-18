@@ -25,9 +25,35 @@ V(s)[zusammenkunstfotografie == 1]$color <- "plum2"
 plot(s, layout=layout_with_kk, main="Die Künstler")
 
 #Die Zocker:
-V(s)[zusammenzocken == 1]$color <- "yellow"
-V(s)[solozocken == 1]$color <- "yellow"
-#schreiber
+
+V(s)[solozocken == 1]$color <- "steelblue4"
+V(s)[zusammenzocken == 1]$color <- "steelblue1"
+plot(s, layout=layout_with_kk, main="Die Spieler")
+
+#Die Schreiber:
 V(s)[soloschreiben == 1]$color <- "gold1"
-#spieler - Spieleabend
-V(s)[spieleabend == 1]$color <- "orange"
+
+#Die kollektiv Filmeschauer:
+filmeabend <- V(s)$X8.Filmabend
+V(s)[filmeabend == 1]$color <- "orange"
+plot(s, layout=layout_with_kk, main="Die kollektiv Filmschauer")
+
+#Die besten Freunde:
+
+zusammenausfluegereisen <- V(s)$X10.Ausfluege...Reisen
+solokunstfotografie <- V(s)$soloKunst.Fotografie
+zusammenkunstfotografie <- V(s)$X9.Kunst...Fotografie
+solozocken <- V(s)$soloZocken
+zusammenzocken <- V(s)$X1.Zocken
+spieleabend <- V(s)$X12.Spieleabend
+soloschreiben <- V(s)$soloSchreiben
+sololesen <- V(s)$soloLesen
+alter <- V(s)$Alter
+solofilmeschauen <- V(s)$soloFilme.Serien.schauen
+solomusikmachen <- V(s)$soloMusik.machen.hoeren
+zusammenkochen <- V(s)$X7.Kochen...Backen
+religion <- V(s)$Religion
+yannylaurel <- V(s)$Yanny.Laurel
+E(s)$arrow.size <- 0.3
+V(s)[soloschreiben == 1 & sololesen == 1 & solofilmeschauen == 1 & solomusikmachen == 1 & zusammenkochen == 2 & religion == 0 & yannylaurel == 3]$color <- "yellowgreen"
+plot(s, layout=layout_with_kk, main="Die besten Freunde")
