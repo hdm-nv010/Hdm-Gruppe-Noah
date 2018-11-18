@@ -1,5 +1,5 @@
 el <- read.csv("https://raw.githubusercontent.com/hdm-nv010/Projekt-Freundschaftsumfrage/master/Edgelist%20IST-Netzwerk%20-%20Sheet1.csv", header=T, as.is=T, sep = ",")
-nodes <- read.csv("https://raw.githubusercontent.com/hdm-nv010/Projekt-Freundschaftsumfrage/master/Nodelist%20-%20Tabellenblatt1.csv", header=T, as.is=T, sep = ",")
+nodes <- read.csv("https://raw.githubusercontent.com/hdm-nv010/Projekt-Freundschaftsumfrage/master/Nodelist%20%20-%20Tabellenblatt1.csv", header=T, as.is=T, sep = ",")
 head(el)
 head(nodes)
 hties <-as.matrix(el)
@@ -25,7 +25,7 @@ plot(s)
 #Ernaehrung und Kochen
 
 el <- read.csv("https://raw.githubusercontent.com/hdm-nv010/Projekt-Freundschaftsumfrage/master/Edgelist%20IST-Netzwerk%20-%20Sheet1.csv", header=T, as.is=T, sep = ",")
-nodes <- read.csv("", header=T, as.is=T, sep = ",")
+nodes <- read.csv("https://raw.githubusercontent.com/hdm-nv010/Projekt-Freundschaftsumfrage/master/Nodelist%20%20-%20Tabellenblatt1.csv", header=T, as.is=T, sep = ",")
 # prüft, ob alle Variablen eingelesen wurdenhead(el)
 head(nodes)
 hties <-as.matrix(el)
