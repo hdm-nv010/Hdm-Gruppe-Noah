@@ -41,4 +41,4 @@ E(s)$arrow.size <- 0.3
 V(s)[ernaehrung == 1 & solokochen == 1]$color <- "chartreuse3"
 #alles-fleischesser
 V(s)[ernaehrung == 3 & solokochen == 1]$color <- "firebrick"
-plot(s, layout=layout_with_kk, main="Ernaherung & Kochen")
+plot(s, layout=layout_with_kk, main="Ernährung & Kochen")
