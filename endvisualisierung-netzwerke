@@ -39,4 +39,4 @@ plot(s,
      vertex.label.cex=1.2,
      vertex.label.color="black",
      edge.color="lightblue",
-     layout=layout_with_kk, main="Die Künstler", sub="Helle Farbe - Allein & Dunkle Farbe - Zusammen")
+     layout=layout_with_kk, main="Die Künstler", sub="Helle Farbe - Zusammen & Dunkle Farbe - Allein")
