@@ -18,20 +18,18 @@ moral <- V(s)$Moral
 insta <- V(s)$Insta
 
 E(s)$curved=.2
-E(s)$arrow.size <- 0.3
-V(s)[crpr == 1]$shape <- "circle"
-V(s)[crpr == 2]$shape <- "rectangle"
-
-#label
-vertex.label.dist=2 # gibt an, wie weit der Label vom Knoten entfernt platziert werden soll
-vertex.label.degree=0 # gibt an, in welchem Winkel der Label zum Knoten gesetzt wird
-vertex.label.cex=.4 # gibt die Größe des Labels an
-vertex.label.family="Times" # gibt die Schriftart des Knotens an
-vertex.label.font=4 # gibt an, welcher Schriftschnitt verwendet wird.
-
-#Titel und Untertitel 
-plot(s,  vertex.size = degree(s),
-     vertex.color = "white",
-     vertex.frame.color = "black",
-     edge.color="lightblue",
-     layout=layout_with_kk, main="Visualisierung", sub="Visualisierungsversuch")
+     E(s)$arrow.size <- 0.3
+     V(s)[crpr == 1]$shape <- "circle"
+     V(s)[crpr == 2]$shape <- "circle"
+     
+ plot(s,
+          vertex.size = degree(s),
+          vertex.color = "lightpink",
+          vertex.frame.color = "black",
+          vertex.label.degree=1.8,
+          vertex.label.dist=1.0,
+          vertex.label.cex=1.2,
+          vertex.label.color="black",
+          edge.color="lightblue",
+          layout=layout_with_kk, main="Visualisierung", sub="Visualisierungsversuch")
+     
