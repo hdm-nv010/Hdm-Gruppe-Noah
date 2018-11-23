@@ -1,16 +1,23 @@
-plot(s,
-     edge.arrow.size=.2,
-     edge.curved=.2,
-     edge.color="grey",
-     edge.width=E(s)$weight,
-     vertex.shape="circle",
-     vertex.color="red",
-     vertex.size=degree(s)*1.5,
-     vertex.label=NA,
-     edge.label=E(s)$weight,
-     edge.label.color="black",
-     edge.label.degree=0,
-     edge.label.cex=.8,
-     edge.label.family="Helvetica",
-     edge.label.font=1,
-     main="Beispiel für die Kantenvisualisierung")
+el <- read.csv("https://raw.githubusercontent.com/hdm-nv010/Projekt-Freundschaftsumfrage/master/anonyme_Edgelist_Freundschaft_neu.csv", header=T, as.is=T, sep = ",")
+nodes <- read.csv("https://raw.githubusercontent.com/hdm-nv010/Projekt-Freundschaftsumfrage/master/Nodelist_anonym%20-%20Tabellenblatt1%20(1).csv", header=T, as.is=T, sep = ",")
+head(el)
+head(nodes)
+hties <-as.matrix(el)
+students <- graph_from_data_frame(d=hties, vertices=nodes, directed=T)
+students
+s <- simplify(students, edge.attr.comb = list(weight="sum"))
+s
+
+alter <- V(s)$Alter 
+crpr <- V(s)$CRPR
+yanny <- V(s)$Yanny.Laurel
+geschlecht <- V(s)$Geschlecht
+ernaehrung <- V(s)$Ernaehrung
+religion <- V(s)$Religion
+moral <- V(s)$Moral
+insta <- V(s)$Insta
+
+E(s)$curved=.2
+E(s)$arrow.size <- 0.3
+V(s)[crpr == 1]$shape <- "sphere"
+V(s)[crpr == 2]$shape <- "rectangle"
