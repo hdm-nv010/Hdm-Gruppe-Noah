@@ -196,7 +196,7 @@ plot(s,
      layout=layout_with_kk, main="Wer ist am beliebtesten?", sub="Größe = Anzahl der Indegrees")
 
 #Indegrees Gruppenarbeit
-el <- read.csv("https://raw.githubusercontent.com/hdm-nv010/Projekt-Freundschaftsumfrage/master/anonyme_Edgelist_Freundschaft_neu.csv", header=T, as.is=T, sep = ",")
+el <- read.csv("https://raw.githubusercontent.com/hdm-nv010/Projekt-Freundschaftsumfrage/master/anonyme_Edgelist_Gruppenarbeit%20-%20Tabellenblatt1.csv", header=T, as.is=T, sep = ",")
 nodes <- read.csv("https://raw.githubusercontent.com/hdm-nv010/Projekt-Freundschaftsumfrage/master/Nodelist_anonym%20-%20Tabellenblatt1%20(1).csv", header=T, as.is=T, sep = ",")
 head(el)
 head(nodes)
