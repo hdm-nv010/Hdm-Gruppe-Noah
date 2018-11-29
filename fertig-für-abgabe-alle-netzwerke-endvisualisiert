@@ -1,0 +1,36 @@
+#Ernaehrung und Kochen
+
+el <- read.csv("https://raw.githubusercontent.com/hdm-nv010/Projekt-Freundschaftsumfrage/master/anonyme_Edgelist_Freundschaft_neu.csv", header=T, as.is=T, sep = ",")
+nodes <- read.csv("https://raw.githubusercontent.com/hdm-nv010/Projekt-Freundschaftsumfrage/master/Nodelist_anonym%20-%20Tabellenblatt1%20(1).csv", header=T, as.is=T, sep = ",")
+head(nodes)
+hties <-as.matrix(el)
+students <- graph_from_data_frame(d=hties, vertices=nodes, directed=T)
+students
+s <- simplify(students, edge.attr.comb = list(weight="sum"))
+s
+list.vertex.attributes(s)
+ernaehrung <- V(s)$Ernaehrung
+solokochen <- V(s)$soloKochen.Backen
+zusammenkochen <- V(s)$X7.Kochen...Backen
+crpr <- V(s)$CRPR
+E(s)$arrow.size <- 0.3
+E(s)$curved=.2
+E(s)$arrow.size <- 0.3
+
+#vegetarier
+V(s)[ernaehrung == 1 & solokochen == 1]$color <- "chartreuse4"
+#alles-fleischesser
+V(s)[ernaehrung == 3 & solokochen == 1]$color <- "firebrick4"
+V(s)[ernaehrung == 3 & zusammenkochen == 1]$color <- "firebrick1"
+V(s)[ernaehrung == 1 & zusammenkochen == 1]$color <- "chartreuse"
+V(s)[crpr == 1]$shape <- "circle"
+V(s)[crpr == 2]$shape <- "square"
+plot(s,
+     vertex.size = 8,
+     vertex.frame.color = "black",
+     vertex.label.degree=1.8,
+     vertex.label.dist=1.0,
+     vertex.label.cex=1.2,
+     vertex.label.color="black",
+     edge.color="lightblue",
+     layout=layout_with_kk, main="Wer kocht mehr? Vegetarier oder Carnivore? ", sub="Rot - Carnvivore & Grün - Vegetarier: Helle Farbe - Zusammen & Dunkle Farbe - Allein")
