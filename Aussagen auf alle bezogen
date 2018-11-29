@@ -164,3 +164,37 @@ plot(s, layout=layout_with_kk, main="Alter & Yanny/Laurel")
 #von 11 alten hören 36,4 prozent/4 leute yanny und 36,4 prozent/4 Leute laurel
 #3 junge hören weder noch, 3 alte hören weder noch
 #jungen hören mehr yanny und bei den alten ist yanny und laurel gleich verteilt
+
+#Moralfrage
+
+el <- read.csv("https://raw.githubusercontent.com/hdm-nv010/Projekt-Freundschaftsumfrage/master/Edgelist%20IST-Netzwerk%20-%20Sheet1.csv", header=T, as.is=T, sep = ",")
+nodes <- read.csv("https://raw.githubusercontent.com/hdm-nv010/Projekt-Freundschaftsumfrage/master/Nodelist%20%20-%20Tabellenblatt1.csv", header=T, as.is=T, sep = ",")
+head(el)
+head(nodes)
+hties <-as.matrix(el)
+students <- graph_from_data_frame(d=hties, vertices=nodes, directed=T)
+students
+s <- simplify(students, edge.attr.comb = list(weight="sum"))
+s
+plot(s)
+
+moral <- V(s)$Moral
+
+V(s)[crpr == 1 & moral == 1]$color <- "red"
+V(s)[crpr == 1 & moral == 2]$color <- "red"
+V(s)[crpr == 1 & moral == 6]$color <- "red"
+V(s)[crpr == 1 & moral == 7]$color <- "red"
+
+V(s)[crpr == 1 & moral == 3]$color <- "blue"
+V(s)[crpr == 1 & moral == 4]$color <- "blue"
+V(s)[crpr == 1 & moral == 5]$color <- "blue"
+
+
+V(s)[crpr == 2 & moral == 1]$color <- "orange"
+V(s)[crpr == 2 & moral == 2]$color <- "orange"
+V(s)[crpr == 2 & moral == 6]$color <- "orange"
+V(s)[crpr == 2 & moral == 7]$color <- "orange"
+
+V(s)[crpr == 2 & moral == 3]$color <- "green"
+V(s)[crpr == 2 & moral == 4]$color <- "green"
+V(s)[crpr == 2 & moral == 5]$color <- "green"
