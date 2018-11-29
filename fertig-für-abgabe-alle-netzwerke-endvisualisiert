@@ -73,7 +73,7 @@ plot(s,
      edge.color="lightblue",
      layout=layout_with_kk, main="Wer shoppt mehr? Männer oder Frauen?", sub="Frauen - Blau & Männer - Gold")
      
-#Wer trink mehr Kaffee? Alt oder Jung?
+#Alter und Kaffee
 
 el <- read.csv("https://raw.githubusercontent.com/hdm-nv010/Projekt-Freundschaftsumfrage/master/anonyme_Edgelist_Freundschaft_neu.csv", header=T, as.is=T, sep = ",")
 nodes <- read.csv("https://raw.githubusercontent.com/hdm-nv010/Projekt-Freundschaftsumfrage/master/Nodelist_anonym%20-%20Tabellenblatt1%20(1).csv", header=T, as.is=T, sep = ",")
@@ -90,21 +90,21 @@ crpr <- V(s)$CRPR
 kaffee <- V(s)$X4.Kaffee.trinken
 E(s)$arrow.size <- 0.3
 #junge Leute von 18 bis einschließlich 22 die keinen Kaffee trinken
-V(s)[alter == 1 & kaffee == 2]$color <- "white"
-V(s)[alter == 2 & kaffee == 2]$color <- "white"
-V(s)[alter == 3 & kaffee == 2]$color <- "white"
-V(s)[alter == 4 & kaffee == 2]$color <- "white"
+V(s)[alter == 1 & kaffee == 2]$color <- "beige"
+V(s)[alter == 2 & kaffee == 2]$color <- "beige"
+V(s)[alter == 3 & kaffee == 2]$color <- "beige"
+V(s)[alter == 4 & kaffee == 2]$color <- "beige"
 #junge leute von 19 bis einschließlich 22 die Kaffee trinken
 V(s)[alter == 1 & kaffee == 1]$color <- "chocolate3"
 V(s)[alter == 2 & kaffee == 1]$color <- "chocolate3"
 V(s)[alter == 3 & kaffee == 1]$color <- "chocolate3"
 V(s)[alter == 4 & kaffee == 1]$color <- "chocolate3"
 #alte Leute von 23 bis einschließlich 29 die keinen Kaffee trinken
-V(s)[alter == 5 & kaffee == 2]$color <- "beige"
-V(s)[alter == 6 & kaffee == 2]$color <- "beige"
-V(s)[alter == 7 & kaffee == 2]$color <- "beige"
-V(s)[alter == 8 & kaffee == 2]$color <- "beige"
-V(s)[alter == 9 & kaffee == 2]$color <- "beige"
+V(s)[alter == 5 & kaffee == 2]$color <- "white"
+V(s)[alter == 6 & kaffee == 2]$color <- "white"
+V(s)[alter == 7 & kaffee == 2]$color <- "white"
+V(s)[alter == 8 & kaffee == 2]$color <- "white"
+V(s)[alter == 9 & kaffee == 2]$color <- "white"
 #alte Leute von 23 bis einschließlich 29 die Kaffee trinken
 V(s)[alter == 5 & kaffee == 1]$color <- "burlywood"
 V(s)[alter == 6 & kaffee == 1]$color <- "burlywood"
@@ -125,6 +125,7 @@ plot(s,
      vertex.label.cex=1.2,
      vertex.label.color="black",
      edge.color="lightblue",
-     layout=layout_with_kk, main="Wer trinkt mehr Kaffee? Alt oder Jung?", sub="Braun - Kaffee & Weiß - kein Kaffee: Dunkel - alt & Hell - jung")
+     layout=layout_with_kk, main="Wer trinkt mehr Kaffee? Alt oder Jung?", sub="Braun - Kaffee & Weiß - kein Kaffee: Dunkel - jung & Hell - alt")
 #von 11 alten trinken 6 kaffee und von 28 jungen trinken 17 kaffee
 #60,7 prozent der Jungen trinken Kaffee und 54,5 prozent der alten trinken Kaffee
+
