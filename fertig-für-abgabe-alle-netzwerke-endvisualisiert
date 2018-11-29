@@ -188,7 +188,7 @@ plot(s,
      vertex.label.cex=1.2,
      vertex.label.color="black",
      edge.color="lightblue",
-     layout=layout_with_kk, main="Wer kocht mehr? Vegetarier oder Carnivore? ", sub="Rot - Carnvivore & Grün - Vegetarier: Helle Farbe - Zusammen & Dunkle Farbe - Allein")
+     layout=layout_with_kk, main="Wer kocht mehr? Vegetarier oder Carnivore? ", sub="Rot - Carnivore & Grün - Vegetarier: Helle Farbe - Zusammen & Dunkle Farbe - Allein")
 
 #Wer shoppt mehr? Männer oder Frauen?
 
