@@ -73,7 +73,7 @@ plot(s,
      edge.color="lightblue",
      layout=layout_with_kk, main="Wer shoppt mehr? Männer oder Frauen?", sub="Frauen - Blau & Männer - Gold")
      
-#Alter und Kaffee
+#Wer trinkt mehr Kaffee? Alt oder Jung?
 
 el <- read.csv("https://raw.githubusercontent.com/hdm-nv010/Projekt-Freundschaftsumfrage/master/anonyme_Edgelist_Freundschaft_neu.csv", header=T, as.is=T, sep = ",")
 nodes <- read.csv("https://raw.githubusercontent.com/hdm-nv010/Projekt-Freundschaftsumfrage/master/Nodelist_anonym%20-%20Tabellenblatt1%20(1).csv", header=T, as.is=T, sep = ",")
@@ -130,7 +130,7 @@ plot(s,
 #60,7 prozent der Jungen trinken Kaffee und 54,5 prozent der alten trinken Kaffee
 
 
-#alter und yanny und laurel
+#Wer hört Yanny und wer Laurel bezogen auf das Alter?
 
 el <- read.csv("https://raw.githubusercontent.com/hdm-nv010/Projekt-Freundschaftsumfrage/master/anonyme_Edgelist_Freundschaft_neu.csv", header=T, as.is=T, sep = ",")
 nodes <- read.csv("https://raw.githubusercontent.com/hdm-nv010/Projekt-Freundschaftsumfrage/master/Nodelist_anonym%20-%20Tabellenblatt1%20(1).csv", header=T, as.is=T, sep = ",")
@@ -198,7 +198,8 @@ plot(s,
 #3 junge hören weder noch, 3 alte hören weder noch
 #jungen hören mehr yanny und bei den alten ist yanny und laurel gleich verteilt
 
-#Moralfrage
+#Wer ist moralischer? CR oder PR?
+
 el <- read.csv("https://raw.githubusercontent.com/hdm-nv010/Projekt-Freundschaftsumfrage/master/anonyme_Edgelist_Freundschaft_neu.csv", header=T, as.is=T, sep = ",")
 nodes <- read.csv("https://raw.githubusercontent.com/hdm-nv010/Projekt-Freundschaftsumfrage/master/Nodelist_anonym%20-%20Tabellenblatt1%20(1).csv", header=T, as.is=T, sep = ",")
 head(el)
@@ -238,7 +239,8 @@ plot(s,
      edge.color="lightblue",
      layout=layout_with_kk, main="Wer ist moralischer? CR oder PR?", sub="Rot - aktiv & Blau - passiv")
      
-     #Die Zocker:
+#Die Spieler:
+
 el <- read.csv("https://raw.githubusercontent.com/hdm-nv010/Projekt-Freundschaftsumfrage/master/anonyme_Edgelist_Freundschaft_neu.csv", header=T, as.is=T, sep = ",")
 nodes <- read.csv("https://raw.githubusercontent.com/hdm-nv010/Projekt-Freundschaftsumfrage/master/Nodelist_anonym%20-%20Tabellenblatt1%20(1).csv", header=T, as.is=T, sep = ",")
 head(nodes)
@@ -248,9 +250,6 @@ students
 s <- simplify(students, edge.attr.comb = list(weight="sum"))
 s
 list.vertex.attributes(s)
-ernaehrung <- V(s)$Ernaehrung
-solokochen <- V(s)$soloKochen.Backen
-zusammenkochen <- V(s)$X7.Kochen...Backen
 crpr <- V(s)$CRPR
 solozocken <- V(s)$soloZocken
 zusammenzocken <- V(s)$X1.Zocken
@@ -271,7 +270,7 @@ plot(s,
      edge.color="lightblue",
      layout=layout_with_kk, main="Die Spieler", sub="Hell - Zusammen & Dunkel - Allein")
 
-#Die Zocker:
+#Die kollektiven Filmeschauer:
 el <- read.csv("https://raw.githubusercontent.com/hdm-nv010/Projekt-Freundschaftsumfrage/master/anonyme_Edgelist_Freundschaft_neu.csv", header=T, as.is=T, sep = ",")
 nodes <- read.csv("https://raw.githubusercontent.com/hdm-nv010/Projekt-Freundschaftsumfrage/master/Nodelist_anonym%20-%20Tabellenblatt1%20(1).csv", header=T, as.is=T, sep = ",")
 head(nodes)
@@ -281,12 +280,7 @@ students
 s <- simplify(students, edge.attr.comb = list(weight="sum"))
 s
 list.vertex.attributes(s)
-ernaehrung <- V(s)$Ernaehrung
-solokochen <- V(s)$soloKochen.Backen
-zusammenkochen <- V(s)$X7.Kochen...Backen
 crpr <- V(s)$CRPR
-solozocken <- V(s)$soloZocken
-zusammenzocken <- V(s)$X1.Zocken
 filmeabend <- V(s)$X8.Filmabend
 V(s)[filmeabend == 1]$color <- "orange"
 E(s)$curved=.2
