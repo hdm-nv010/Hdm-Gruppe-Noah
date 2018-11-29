@@ -270,3 +270,35 @@ plot(s,
      vertex.label.color="black",
      edge.color="lightblue",
      layout=layout_with_kk, main="Die Spieler", sub="Hell - Zusammen & Dunkel - Allein")
+
+#Die Zocker:
+el <- read.csv("https://raw.githubusercontent.com/hdm-nv010/Projekt-Freundschaftsumfrage/master/anonyme_Edgelist_Freundschaft_neu.csv", header=T, as.is=T, sep = ",")
+nodes <- read.csv("https://raw.githubusercontent.com/hdm-nv010/Projekt-Freundschaftsumfrage/master/Nodelist_anonym%20-%20Tabellenblatt1%20(1).csv", header=T, as.is=T, sep = ",")
+head(nodes)
+hties <-as.matrix(el)
+students <- graph_from_data_frame(d=hties, vertices=nodes, directed=T)
+students
+s <- simplify(students, edge.attr.comb = list(weight="sum"))
+s
+list.vertex.attributes(s)
+ernaehrung <- V(s)$Ernaehrung
+solokochen <- V(s)$soloKochen.Backen
+zusammenkochen <- V(s)$X7.Kochen...Backen
+crpr <- V(s)$CRPR
+solozocken <- V(s)$soloZocken
+zusammenzocken <- V(s)$X1.Zocken
+filmeabend <- V(s)$X8.Filmabend
+V(s)[filmeabend == 1]$color <- "orange"
+E(s)$curved=.2
+E(s)$arrow.size <- 0.3
+V(s)[crpr == 1]$shape <- "circle"
+V(s)[crpr == 2]$shape <- "square"
+plot(s,
+     vertex.size = 8,
+     vertex.frame.color = "black",
+     vertex.label.degree=1.8,
+     vertex.label.dist=1.0,
+     vertex.label.cex=1.2,
+     vertex.label.color="black",
+     edge.color="lightblue",
+     layout=layout_with_kk, main="Die kollektiven Filmschauer")
